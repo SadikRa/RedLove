@@ -11,8 +11,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "SadikVerse",
-  description: "Welcome to SadikVerse",
+  title: "RedLove ",
+  description: "Give Love With Every Drop",
 };
 
 export default function RootLayout({
