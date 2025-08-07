@@ -1,10 +1,10 @@
+// import LoginForm from "@/components/modules/auth/Login/LoginForm";
 
-const page = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+const LoginPage = () => {
+  return (
+    <div>
+      {/* <LoginForm /> */}
+    </div>
+  );
 };
-
-export default page;
+export default LoginPage;
