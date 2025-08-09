@@ -31,6 +31,7 @@ const Navbar = () => {
     { name: "Contact Us", href: "/contact" },
   ];
 
+  
   return (
     <nav className="fixed top-0 left-0 w-full bg-background/80 backdrop-blur-md border-b border-border shadow-md z-50">
       <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
