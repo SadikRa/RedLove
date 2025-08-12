@@ -12,6 +12,7 @@ import Image from "next/image";
 export type FormValues = {
   name: string;
   email: string;
+  phone: string;
   password: string;
 };
 
@@ -30,9 +31,9 @@ const RegisterForm = () => {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="grid md:grid-cols-2 w-full max-w-4xl shadow-lg bg-card border border-border rounded-lg overflow-hidden">
         {/* Left Side - Image */}
-        <div className="hidden md:block w-full">
+        <div className="hidden md:block w-full p-12">
           <Image
-            src="https://res.cloudinary.com/dazrkjcqb/image/upload/v1740850006/fdzatfp6304hazk2oygq.webp"
+            src="https://res.cloudinary.com/dazrkjcqb/image/upload/v1754922013/nleiyjl7rgykrwygvfmz.png"
             alt="Register Illustration"
             width={600}
             height={800}
@@ -41,7 +42,7 @@ const RegisterForm = () => {
         </div>
 
         {/* Right Side - Form */}
-        <Card className="w-full p-6">
+        <Card className="w-full rounded-bl-none rounded-tl-none p-6">
           <CardHeader>
             <div className="flex justify-between items-center">
               <CardTitle className="text-2xl font-bold text-primary">
@@ -100,6 +101,34 @@ const RegisterForm = () => {
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.email.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Phone Field */}
+              <div>
+                <Label
+                  htmlFor="phone"
+                  className="text-sm font-medium text-primary"
+                >
+                  Phone
+                </Label>
+                <Input
+                  {...register("phone", {
+                    required: "Phone is required",
+                    pattern: {
+                      value: /^[0-9+\-()\s]+$/,
+                      message: "Invalid phone format",
+                    },
+                  })}
+                  type="text"
+                  id="phone"
+                  placeholder="Enter your phone"
+                  className="mt-1"
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.phone.message}
                   </p>
                 )}
               </div>
