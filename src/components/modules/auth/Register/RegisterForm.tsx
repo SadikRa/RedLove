@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -8,6 +9,8 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { ModeToggle } from "@/components/mode-toggle";
 import Image from "next/image";
+import { registerUser } from "@/services/AuthService";
+import { toast } from "sonner";
 
 export type FormValues = {
   name: string;
@@ -24,7 +27,16 @@ const RegisterForm = () => {
   } = useForm<FormValues>();
 
   const onSubmit = async (data: FormValues) => {
-    console.log("User Registered:", data);
+    try {
+      const res = await registerUser(data);
+      if (res?.success) {
+        toast.success(`${res?.message} please login`);
+      } else {
+        toast.error(res?.message);
+      }
+    } catch (err: any) {
+      console.error(err);
+    }
   };
 
   return (

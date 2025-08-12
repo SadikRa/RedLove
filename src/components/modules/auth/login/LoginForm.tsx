@@ -11,7 +11,6 @@ import { ModeToggle } from "@/components/mode-toggle";
 import Image from "next/image";
 import { loginUser } from "@/services/AuthService";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 
 export type FormValues = {
   email: string;
@@ -19,24 +18,15 @@ export type FormValues = {
 };
 
 const LoginForm = () => {
-  const router = useRouter();
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
 
-  //   const onSubmit = async (data: FormValues) => {
-  //     console.log("User Registered:", data);
-  //   };
-
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log("data", data);
     try {
       const res = await loginUser(data);
-      console.log("res", res);
-      // console.log(res);
       if (res?.success) {
         toast.success(res?.message);
       } else {
