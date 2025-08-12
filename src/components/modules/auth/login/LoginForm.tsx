@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,6 +9,9 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { ModeToggle } from "@/components/mode-toggle";
 import Image from "next/image";
+import { loginUser } from "@/services/AuthService";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export type FormValues = {
   email: string;
@@ -15,14 +19,34 @@ export type FormValues = {
 };
 
 const LoginForm = () => {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit = async (data: FormValues) => {
-    console.log("User Registered:", data);
+  //   const onSubmit = async (data: FormValues) => {
+  //     console.log("User Registered:", data);
+  //   };
+
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    console.log("data", data);
+    try {
+      const res = await loginUser(data);
+      console.log("res", res);
+      // console.log(res);
+      if (res?.success) {
+        toast.success(res?.message);
+      } else {
+        toast.error(res?.massage);
+      }
+    } catch (err: any) {
+      console.error(err);
+      toast.error(err?.message);
+    } finally {
+    }
   };
 
   return (
@@ -44,7 +68,7 @@ const LoginForm = () => {
           <CardHeader>
             <div className="flex justify-between items-center">
               <CardTitle className="text-2xl font-bold text-primary">
-                Create an Account
+                Login to RedLove🩸
               </CardTitle>
               <ModeToggle />
             </div>

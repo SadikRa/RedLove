@@ -31,7 +31,7 @@ const RegisterForm = () => {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="grid md:grid-cols-2 w-full max-w-4xl shadow-lg bg-card border border-border rounded-lg overflow-hidden">
         {/* Left Side - Image */}
-        <div className="hidden md:block w-full p-12">
+        <div className="hidden md:block w-full px-8 py-18">
           <Image
             src="https://res.cloudinary.com/dazrkjcqb/image/upload/v1754922013/nleiyjl7rgykrwygvfmz.png"
             alt="Register Illustration"
@@ -46,7 +46,7 @@ const RegisterForm = () => {
           <CardHeader>
             <div className="flex justify-between items-center">
               <CardTitle className="text-2xl font-bold text-primary">
-                Create an Account
+                Create an Account🩸
               </CardTitle>
               <ModeToggle />
             </div>
