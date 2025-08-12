@@ -24,8 +24,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${roboto.className} bg-gray-50 dark:bg-gray-900`}>
         <ClientThemeProvider>
-          {" "}
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-full mx-auto">
             {children}
             <Toaster />
           </div>
